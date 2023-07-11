@@ -28,5 +28,10 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> listarUsuarios() throws Exception {
         return new ResponseEntity<>(usuarioService.getAllUser(), HttpStatus.OK);
     }
+    @GetMapping("/{username}")
+    public ResponseEntity<Usuario> obtenerUsuario(@PathVariable String username) throws Exception{
+        Usuario localUser = this.usuarioService.getUser(username);
+        return (localUser != null) ? ResponseEntity.ok(localUser) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
 }
