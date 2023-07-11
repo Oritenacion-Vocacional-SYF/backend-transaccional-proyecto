@@ -10,5 +10,7 @@ public interface UsuarioService {
 
     public List<Usuario> getAllUser();
 
+    public Usuario getUser(String username);
+
 
 }
