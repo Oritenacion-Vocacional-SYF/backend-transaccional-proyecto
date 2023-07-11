@@ -34,4 +34,11 @@ public class UsuarioController {
         return (localUser != null) ? ResponseEntity.ok(localUser) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @DeleteMapping("/{username}")
+    public ResponseEntity<?> eliminarUsuario(@PathVariable String username)throws Exception{
+        this.usuarioService.deleteUser(username);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
 }

@@ -12,5 +12,7 @@ public interface UsuarioService {
 
     public Usuario getUser(String username);
 
+    public void deleteUser(String username);
+
 
 }
