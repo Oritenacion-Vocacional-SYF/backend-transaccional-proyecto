@@ -5,6 +5,8 @@ import com.vocacional.sitapivocacional.repository.UsuarioRepository;
 import com.vocacional.sitapivocacional.service.UsuarioService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
     private final UsuarioRepository usuarioRepository;
@@ -18,5 +20,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario userLocal = usuarioRepository.findAllByUsername(usuario.getUsername());
         return (userLocal == null) ?  usuarioRepository.save(usuario) : null ;
     }
+
+    @Override
+    public List<Usuario> getAllUser() {
+        return this.usuarioRepository.findAll();
+    }
+
+
+
+
 
 }
