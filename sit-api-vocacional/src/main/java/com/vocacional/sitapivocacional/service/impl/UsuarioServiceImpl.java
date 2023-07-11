@@ -31,6 +31,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.findAllByUsername(username);
     }
 
-
+    @Override
+    public void deleteUser(String username) {
+        this.usuarioRepository.deleteById(username);
+    }
 
 }
