@@ -8,5 +8,7 @@ public interface UsuarioService {
 
     public Usuario addUser(Usuario usuario) throws Exception;
 
+    public List<Usuario> getAllUser();
+
 
 }
