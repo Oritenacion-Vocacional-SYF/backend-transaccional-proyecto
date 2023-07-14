@@ -24,9 +24,14 @@ public class ProfesionController {
         return (profesionService.addProfesion(profesion) != null) ? new ResponseEntity<>(profesion, HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/{idProfesion}")
+    public ResponseEntity<Profesion> obtenerProfesion(@PathVariable Long idProfesion) {
+        Profesion localProfesion = this.profesionService.getProfesion(idProfesion);
+        return (localProfesion != null) ? ResponseEntity.ok(localProfesion) : new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+    
     @GetMapping
     public ResponseEntity<List<Profesion>> listarProfesion() {
         return ResponseEntity.ok(profesionService.getAllProfesion());
     }
-
 }
