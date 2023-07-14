@@ -23,6 +23,9 @@ public class PlanController {
     public ResponseEntity<Plan> registrarPlan(@RequestBody Plan plan) {
         return (planService.addPlan(plan) != null) ? new ResponseEntity<>(plan, HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    
+    @GetMapping
+    public ResponseEntity<List<Plan>> listarPlan() {
+        return ResponseEntity.ok(planService.getAllPlan());
+    }
 
 }
