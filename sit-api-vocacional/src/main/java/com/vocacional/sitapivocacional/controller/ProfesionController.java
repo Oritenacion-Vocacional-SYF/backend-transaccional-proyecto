@@ -29,4 +29,9 @@ public class ProfesionController {
         return ResponseEntity.ok(profesionService.getAllProfesion());
     }
 
+    @PutMapping
+    public ResponseEntity<Profesion> modificarProfesion(@RequestBody Profesion profesion) {
+        return (profesionService.updateProfesion(profesion) != null) ? new ResponseEntity<>(profesion, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
 }
