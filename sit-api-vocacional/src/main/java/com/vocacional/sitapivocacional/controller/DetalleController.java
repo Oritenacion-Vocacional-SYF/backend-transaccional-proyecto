@@ -24,4 +24,9 @@ public class DetalleController {
         System.out.println(oDP);
         return (detalleService.addDetalle(oDP) != null) ? new ResponseEntity<>(oDP, HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+    @GetMapping
+    public ResponseEntity<List<DetallePago>> listarDetalle() {
+        return ResponseEntity.ok(detalleService.getAllDetalle());
+    }
+
 }
