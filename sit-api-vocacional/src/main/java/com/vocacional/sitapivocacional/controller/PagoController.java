@@ -22,4 +22,8 @@ public class PagoController {
     public ResponseEntity<Pago> registrarPago(@RequestBody Pago pago) {
         return (pagoService.addPago(pago) != null) ? new ResponseEntity<>(pago, HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+    @GetMapping
+    public ResponseEntity<List<Pago>> listarPago() {
+        return ResponseEntity.ok(pagoService.getAllPago());
+    }
 }
