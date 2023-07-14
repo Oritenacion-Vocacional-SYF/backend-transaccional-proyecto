@@ -29,4 +29,9 @@ public class ProfesionController {
         Profesion localProfesion = this.profesionService.getProfesion(idProfesion);
         return (localProfesion != null) ? ResponseEntity.ok(localProfesion) : new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
+    
+    @GetMapping
+    public ResponseEntity<List<Profesion>> listarProfesion() {
+        return ResponseEntity.ok(profesionService.getAllProfesion());
+    }
 }
