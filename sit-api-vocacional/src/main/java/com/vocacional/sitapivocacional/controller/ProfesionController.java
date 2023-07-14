@@ -40,4 +40,9 @@ public class ProfesionController {
         return (profesionService.updateProfesion(profesion) != null) ? new ResponseEntity<>(profesion, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
+    @DeleteMapping("/{idProfesion}")
+    public ResponseEntity<?> eliminarProfesionId(@PathVariable Long idProfesion) {
+        this.profesionService.deleteProfesionId(idProfesion);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
