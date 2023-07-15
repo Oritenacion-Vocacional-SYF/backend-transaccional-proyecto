@@ -14,5 +14,5 @@ public interface UsuarioService {
 
     public void deleteUser(String username);
 
-
+    public Usuario authUser(Usuario usuario);
 }
