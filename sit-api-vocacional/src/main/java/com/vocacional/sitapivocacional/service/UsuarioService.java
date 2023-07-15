@@ -14,5 +14,7 @@ public interface UsuarioService {
 
     public void deleteUser(String username);
 
-    public Usuario authUser(Usuario usuario);
+    public List<Usuario> getUserByRol(String rolName);
+    public Usuario authUser(String username, String password);
+
 }
