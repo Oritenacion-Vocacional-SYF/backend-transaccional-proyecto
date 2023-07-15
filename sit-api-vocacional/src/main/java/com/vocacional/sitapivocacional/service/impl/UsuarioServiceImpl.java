@@ -36,4 +36,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         this.usuarioRepository.deleteById(username);
     }
 
+    @Override
+    public Usuario authUser(Usuario usuario) {
+        return null;
+    }
+
+
 }

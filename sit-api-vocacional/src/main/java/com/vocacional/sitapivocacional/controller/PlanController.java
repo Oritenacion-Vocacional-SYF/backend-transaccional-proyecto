@@ -28,4 +28,10 @@ public class PlanController {
         return ResponseEntity.ok(planService.getAllPlan());
     }
 
+    @DeleteMapping("/{idPlan}")
+    public ResponseEntity<?> eliminarPlanId(@PathVariable Long idPlan) {
+        this.planService.deletePlanId(idPlan);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
