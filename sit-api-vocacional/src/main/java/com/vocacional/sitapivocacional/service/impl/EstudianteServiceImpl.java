@@ -1,9 +1,12 @@
 package com.vocacional.sitapivocacional.service.impl;
 
 import com.vocacional.sitapivocacional.model.Estudiante;
+import com.vocacional.sitapivocacional.model.Usuario;
 import com.vocacional.sitapivocacional.repository.EstudianteRepository;
 import com.vocacional.sitapivocacional.service.EstudianteService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EstudianteServiceImpl implements EstudianteService {
@@ -27,5 +30,20 @@ public class EstudianteServiceImpl implements EstudianteService {
     @Override
     public Estudiante updateEstudiante(Estudiante estudiante) {
         return estudianteRepository.save(estudiante);
+    }
+
+    @Override
+    public void deleteEstudianteId(String dni) {
+        this.estudianteRepository.deleteById(dni);
+    }
+
+    @Override
+    public List<Estudiante> getAllEstudiante() {
+        return estudianteRepository.findAll();
+    }
+
+    @Override
+    public Estudiante getEstudianteUsername(Usuario usuario) {
+        return this.estudianteRepository.findEstudianteByUsuario(usuario);
     }
 }

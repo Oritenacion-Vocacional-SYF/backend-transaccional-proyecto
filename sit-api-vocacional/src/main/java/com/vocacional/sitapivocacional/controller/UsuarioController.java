@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -38,6 +39,17 @@ public class UsuarioController {
     public ResponseEntity<?> eliminarUsuario(@PathVariable String username)throws Exception{
         this.usuarioService.deleteUser(username);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/roles/{nameRol}")
+    public ResponseEntity<List<Usuario>> listarUsuarioRol(@PathVariable String nameRol){
+        return new ResponseEntity<>(usuarioService.getUserByRol(nameRol), HttpStatus.OK);
+    }
+
+    @PostMapping("/auth")
+    public ResponseEntity<Usuario> autenticarUsuario(@RequestBody Usuario usuario){
+        System.out.println(usuario);
+        Usuario localUser = this.usuarioService.authUser(usuario.getUsername(), usuario.getPassword());
+        return ResponseEntity.ok(localUser);
     }
 
 }

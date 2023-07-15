@@ -16,7 +16,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario addUser(Usuario usuario) throws Exception {
+    public Usuario addUser(Usuario usuario)  {
         Usuario userLocal = usuarioRepository.findAllByUsername(usuario.getUsername());
         return (userLocal == null) ?  usuarioRepository.save(usuario) : null ;
     }
@@ -32,13 +32,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Usuario authUser(String username, String password) {
+        return this.usuarioRepository.findUsuarioByUsernameAndPassword(username, password);
+    }
+
+
+    @Override
     public void deleteUser(String username) {
         this.usuarioRepository.deleteById(username);
     }
 
     @Override
-    public Usuario authUser(Usuario usuario) {
-        return null;
+    public List<Usuario> getUserByRol(String rolName) {
+        return this.getAllUser().stream().filter(e -> e.getRol().getNameRol().equals(rolName)).toList();
     }
 
 
